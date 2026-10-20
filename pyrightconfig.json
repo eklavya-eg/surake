@@ -1,0 +1,12 @@
+{
+  "extraPaths": [
+    "src",
+    "services/browser_agent/src",
+    "services/pdf_editor_agent/src"
+  ],
+  "exclude": [
+    ".venv",
+    "services/browser_agent/.venv",
+    "services/pdf_editor_agent/.venv"
+  ]
+}

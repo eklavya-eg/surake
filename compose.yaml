@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: surake
+      POSTGRES_USER: surake
+      POSTGRES_PASSWORD: surake
+    ports:
+      - "5432:5432"
+    volumes:
+      - surake-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U surake -d surake"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  surake-postgres:

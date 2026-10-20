@@ -1,0 +1,25 @@
+[project]
+name = "surake-pdf-editor-agent"
+version = "0.1.0"
+description = "Local-artifact PDF editing FastAPI service for Surake"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.146.0",
+    "pydantic-settings>=2.10.0",
+    "pypdf>=6.0.0",
+    "python-multipart>=0.0.20",
+    "uvicorn[standard]>=0.35.0",
+]
+
+[dependency-groups]
+dev = ["httpx>=0.28.1", "pytest>=8.4.0"]
+
+[project.scripts]
+pdf-editor-agent = "pdf_editor_agent.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pdf_editor_agent"]
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"

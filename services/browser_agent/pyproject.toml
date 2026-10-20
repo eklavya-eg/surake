@@ -1,0 +1,24 @@
+[project]
+name = "surake-browser-agent"
+version = "0.1.0"
+description = "Bounded browser automation FastAPI service for Surake"
+requires-python = ">=3.12"
+dependencies = [
+    "browser-use>=0.13.11",
+    "fastapi>=0.146.0",
+    "pydantic-settings>=2.10.0",
+    "uvicorn[standard]>=0.35.0",
+]
+
+[dependency-groups]
+dev = ["httpx>=0.28.1", "pytest>=8.4.0"]
+
+[project.scripts]
+browser-agent = "browser_agent.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/browser_agent"]
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"

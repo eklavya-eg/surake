@@ -3,17 +3,36 @@ name = "surake"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12.15"
+requires-python = ">=3.12"
 dependencies = [
+    "asyncpg>=0.30.0",
     "browser-use>=0.13.11",
     "fastapi>=0.146.0",
+    "httpx>=0.28.1",
     "langchain-openai>=1.3.4",
     "langchain-openrouter>=0.2.9",
     "langchain-typesafe>=0.0.1a3",
     "langgraph>=1.2.16",
-    "langgraph-checkpoint-sqlite>=3.1.2",
+    "pydantic-settings>=2.10.0",
     "python-dotenv>=1.2.2",
+    "python-multipart>=0.0.20",
+    "uvicorn[standard]>=0.35.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
+    "pytest-asyncio>=1.1.0",
+    "surake-browser-agent",
+    "surake-pdf-editor-agent",
+]
+
+[tool.uv.sources]
+surake-browser-agent = { path = "services/browser_agent", editable = true }
+surake-pdf-editor-agent = { path = "services/pdf_editor_agent", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [project.scripts]
 surake = "surake:main"
